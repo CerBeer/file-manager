@@ -6,14 +6,14 @@ const func = (params, env) => {
   try {
     process.chdir(pathToDirectory);
     env.workPath = process.cwd();
-    return coloring('Operation successful', colors.fg.green);
+    return coloring("Operation successful", colors.fg.green);
   } catch (err) {
     return coloring("Operation failed", colors.fg.red);
   }
 };
 
 const about = coloring(
-  `Go to dedicated folder from current directory (path_to_directory can be relative or absolute)`,
+  `Usage: cd <path_to_directory>\nGo to dedicated folder from current directory (path_to_directory can be relative or absolute)`,
   colors.fg.green
 );
 

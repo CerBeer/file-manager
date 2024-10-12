@@ -3,6 +3,7 @@ import man from "./commands/man.js";
 import help from "./commands/help.js";
 import exit from "./commands/exit.js";
 import about from "./commands/about.js";
+import cat from "./commands/cat.js";
 import cd from "./commands/cd.js";
 import ls from "./commands/ls.js";
 import up from "./commands/up.js";
@@ -13,6 +14,7 @@ const commandsList = {
   about: about,
   man: man,
   help: help,
+  cat: cat,
   cd: cd,
   ls: ls,
   up: up,

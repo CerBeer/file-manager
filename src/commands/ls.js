@@ -1,14 +1,5 @@
-import { Console } from 'node:console'
-import { Transform } from 'node:stream'
 import fs from "node:fs/promises";
 import coloring, { colors } from "../utils/colors.js";
-
-const ts = new Transform({ transform(chunk, enc, cb) { cb(null, chunk) } })
-const tabled = new Console({ stdout: ts })
-function getTable(data) {
-  tabled.table(data)
-  return (ts.read() || '').toString()
-}
 
 const listDir = async (source) => {
   const dirEntry = await fs.readdir(source, { withFileTypes: true });
@@ -43,7 +34,8 @@ const func = async (_, env) => {
 };
 
 const about = coloring(
-  `Print in console list of all files and folders in current directory. List contain:
+  `Usage: ls
+Print in console list of all files and folders in current directory. List contain:
 -files and folder names (for files - with extension)
 -folders and files are sorted in alphabetical order ascending, but list of folders goes first
 -type of directory content marked explicitly as a corresponding column value`,
