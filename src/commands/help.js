@@ -1,9 +1,16 @@
+import coloring, { colors } from "../utils/colors.js";
+
 const func = () => {
-  return 'Try "man <command> to get information about <command>';
+  return coloring(
+    'Try "man <command> to get information about <command>',
+    colors.fg.green
+  );
 };
 
-const about =
-  'The "help" command is a tool that allows users to access information about command "man"';
+const about = coloring(
+  'The "help" command is a tool that allows users to access information about command "man"',
+  colors.fg.green
+);
 
 const help = () => {
   return { func, about };
