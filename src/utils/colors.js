@@ -17,7 +17,7 @@ export const colors = {
     cyan: "\x1b[36m",
     white: "\x1b[37m",
     gray: "\x1b[90m",
-    crimson: "\x1b[38m", // Scarlet
+    crimson: "\x1b[38m",
   },
   bg: {
     black: "\x1b[40m",

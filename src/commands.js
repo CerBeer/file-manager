@@ -2,12 +2,14 @@ import coloring, { colors } from "./utils/colors.js";
 import man from "./commands/man.js";
 import help from "./commands/help.js";
 import exit from "./commands/exit.js";
+import about from "./commands/about.js"
 
 const commandsList = {
+  ".exit": exit,
+  "?": help,
+  about: about,
   man: man,
   help: help,
-  "?": help,
-  ".exit": exit,
 };
 
 const isKnownCommand = (command) => {
