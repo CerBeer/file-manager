@@ -2,7 +2,10 @@ import coloring, { colors } from "./utils/colors.js";
 import man from "./commands/man.js";
 import help from "./commands/help.js";
 import exit from "./commands/exit.js";
-import about from "./commands/about.js"
+import about from "./commands/about.js";
+import cd from "./commands/cd.js";
+import ls from "./commands/ls.js";
+import up from "./commands/up.js";
 
 const commandsList = {
   ".exit": exit,
@@ -10,6 +13,9 @@ const commandsList = {
   about: about,
   man: man,
   help: help,
+  cd: cd,
+  ls: ls,
+  up: up,
 };
 
 const isKnownCommand = (command) => {
@@ -19,7 +25,10 @@ const isKnownCommand = (command) => {
 const getCommand = (command) => {
   if (!isKnownCommand(command)) {
     return () => {
-      return coloring('Command not found, try "help"', colors.fg.yellow);
+      return coloring(
+        'Invalid input\nCommand not found, try "help"',
+        colors.fg.yellow
+      );
     };
   }
   const { func } = commandsList[command]();
