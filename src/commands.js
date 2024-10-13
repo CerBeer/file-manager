@@ -7,6 +7,7 @@ import cat from "./commands/cat.js";
 import cd from "./commands/cd.js";
 import ls from "./commands/ls.js";
 import up from "./commands/up.js";
+import os from "./commands/os.js";
 
 const commandsList = {
   ".exit": exit,
@@ -18,6 +19,7 @@ const commandsList = {
   cd: cd,
   ls: ls,
   up: up,
+  os:os,
 };
 
 const isKnownCommand = (command) => {
