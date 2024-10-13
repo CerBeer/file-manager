@@ -13,6 +13,7 @@ import exit from "./commands/exit.js";
 import ls from "./commands/ls.js";
 import os from "./commands/os.js";
 import mv from "./commands/mv.js";
+import remove from "./commands/rm.js";
 import rn from "./commands/rn.js";
 import up from "./commands/up.js";
 
@@ -32,6 +33,7 @@ const commandsList = {
   ls: ls,
   os: os,
   mv: mv,
+  rm: remove,
   rn: rn,
   up: up,
 };
