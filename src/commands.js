@@ -1,5 +1,6 @@
 import coloring, { colors } from "./utils/colors.js";
 import about from "./commands/about.js";
+import add from "./commands/add.js";
 import cat from "./commands/cat.js";
 import cd from "./commands/cd.js";
 import compress from "./commands/compress.js";
@@ -16,6 +17,7 @@ const commandsList = {
   ".exit": exit,
   "?": help,
   about: about,
+  add: add,
   cat: cat,
   cd: cd,
   compress: compress,

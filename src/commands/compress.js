@@ -15,18 +15,22 @@ const func = async (params, env) => {
 
   try {
     const errorSourceNeedThrow = await fs
-    .access(source)
-    .then(() => false)
-    .catch(() => true);
-    const errSrc = {message: `FNF: File not found, source: ${source}`}
-    if (errorSourceNeedThrow) return env.messages.OperationFailedWithError(errSrc);
+      .access(source)
+      .then(() => false)
+      .catch(() => true);
+    const errSrc = { message: `FNF: File not found, source: ${source}` };
+    if (errorSourceNeedThrow)
+      return env.messages.OperationFailedWithError(errSrc);
 
     const errorDestNeedThrow = await fs
-    .access(destination)
-    .then(() => true)
-    .catch(() => false);
-    const errDest = {message: `FAE: File already exist, destination: ${destination}`}
-    if (errorDestNeedThrow) return env.messages.OperationFailedWithError(errDest);
+      .access(destination)
+      .then(() => true)
+      .catch(() => false);
+    const errDest = {
+      message: `FAE: File already exist, destination: ${destination}`,
+    };
+    if (errorDestNeedThrow)
+      return env.messages.OperationFailedWithError(errDest);
 
     const read = createReadStream(source);
     const write = createWriteStream(destination);
