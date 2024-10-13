@@ -9,7 +9,6 @@ const func = async (params, env) => {
   const errDst = {
     message: `WFPoN: Wrong file path or name, destination: ${destination}`,
   };
-  console.log(path.dirname(destination), env.workPath);
   if (path.dirname(destination) !== env.workPath)
     return env.messages.OperationFailedWithError(errDst);
   try {

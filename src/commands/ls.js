@@ -27,8 +27,6 @@ const func = async (_, env) => {
     });
     console.table(result);
     return env.messages.OperationSuccessful;
-    // env.print("\n");
-    // env.printCurrentDir();
   } catch (err) {
     return env.messages.OperationFailed;
   }

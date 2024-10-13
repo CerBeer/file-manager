@@ -1,8 +1,10 @@
 const parseInputString = (inputString) => {
   const result = { command: "", args: [] };
-  if (!inputString.length) return result;
+  const stripString = inputString.trim();
+  if (!stripString.length) return result;
 
-  const splitString = inputString.split(" ");
+  const splitString = stripString.split(" ");
+
   result.command = splitString[0];
   if (splitString.length === 1) return result;
 
@@ -19,15 +21,17 @@ const parseInputString = (inputString) => {
         result.args[result.args.length - 1]
       } ${currParam}`;
     } else {
-      if (currParam.slice(0, 1) === '"') {
-        currParam = currParam.slice(1);
-        complexParam = true;
-        if (currParam.slice(-1) === '"') {
-          complexParam = false;
-          currParam = currParam.slice(0, -1);
+      if (currParam.length) {
+        if (currParam.slice(0, 1) === '"') {
+          currParam = currParam.slice(1);
+          complexParam = true;
+          if (currParam.slice(-1) === '"') {
+            complexParam = false;
+            currParam = currParam.slice(0, -1);
+          }
         }
+        result.args.push(currParam);
       }
-      result.args.push(currParam);
     }
   }
   return result;

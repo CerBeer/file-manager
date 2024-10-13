@@ -43,6 +43,11 @@ const isKnownCommand = (command) => {
 };
 
 const getCommand = (command) => {
+  if (!command.length) {
+    return () => {
+      return "";
+    };
+  }
   if (!isKnownCommand(command)) {
     return () => {
       return coloring(
@@ -67,7 +72,7 @@ export const getMan = (command) => {
 };
 
 export const getCommandsList = () => {
-  return Object.keys(commandsList).sort().join(",");
+  return Object.keys(commandsList).sort().join(", ");
 };
 
 export default getCommand;

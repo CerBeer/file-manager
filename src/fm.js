@@ -5,7 +5,6 @@ const fm = async (env, inputString) => {
   const command = parseInputString(inputString);
   const func = getCommand(command.command);
   const result = await func(command.args, env);
-  // console.log(result);
   if (typeof result === "string") {
     if (result.length) env.print(result);
     env.print("\n");
