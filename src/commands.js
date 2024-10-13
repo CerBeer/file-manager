@@ -3,6 +3,7 @@ import about from "./commands/about.js";
 import add from "./commands/add.js";
 import cat from "./commands/cat.js";
 import cd from "./commands/cd.js";
+import cp from "./commands/cp.js";
 import compress from "./commands/compress.js";
 import decompress from "./commands/decompress.js";
 import man from "./commands/man.js";
@@ -21,6 +22,7 @@ const commandsList = {
   add: add,
   cat: cat,
   cd: cd,
+  cp: cp,
   compress: compress,
   decompress: decompress,
   man: man,
