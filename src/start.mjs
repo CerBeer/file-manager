@@ -4,9 +4,12 @@ import readline from "readline";
 import userNameFromArgs from "./utils/user.js";
 import fm from "./fm.js";
 
+import messages from "./utils/messages.js";
+
 process.chdir(homedir());
 
 const env = {};
+env.messages = messages;
 env.userName = userNameFromArgs();
 env.workPath = process.cwd();
 env.output = process.stdout;

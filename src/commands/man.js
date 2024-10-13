@@ -2,7 +2,11 @@ import { getMan, getCommandsList } from "../commands.js";
 import coloring, { colors } from "../utils/colors.js";
 
 const func = (params = []) => {
-  if (!params.length) return coloring('Usage: man <command>\nTry command "man man"', colors.fg.yellow);
+  if (!params.length)
+    return coloring(
+      'Usage: man <command>\nTry command "man man"',
+      colors.fg.yellow
+    );
   const command = params[0];
   if (command === "*") return coloring(getCommandsList(), colors.fg.green);
   return getMan(command);

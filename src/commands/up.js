@@ -4,9 +4,9 @@ const func = (_, env) => {
   try {
     process.chdir("..");
     env.workPath = process.cwd();
-    return coloring("Operation successful", colors.fg.green);
+    return env.messages.OperationSuccessful;
   } catch (err) {
-    return coloring("Operation failed", colors.fg.red);
+    return env.messages.OperationFailed;
   }
 };
 

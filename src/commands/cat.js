@@ -5,23 +5,26 @@ import fs from "fs";
 import coloring, { colors } from "../utils/colors.js";
 
 const func = async (params, env) => {
-  if (!params.length) return coloring("Invalid input", colors.fg.yellow);
+  if (!params.length) return env.messages.InvalidParameters;
   const pathToFile = params[0];
   try {
     const file = resolve(pathToFile);
     const read = fs.createReadStream(file, "utf-8");
-    await pipeline(read, new Writable({
-      decodeStrings: false,
-      write(chunk, _, callback) {
-        console.log(chunk);
-        callback();
-      },
-    }));
-    return coloring("Operation successful", colors.fg.green);
+    await pipeline(
+      read,
+      new Writable({
+        decodeStrings: false,
+        write(chunk, _, callback) {
+          console.log(chunk);
+          callback();
+        },
+      })
+    );
+    return env.messages.OperationSuccessful;
     // env.print("\n");
     // env.printCurrentDir();
   } catch (err) {
-    return coloring("Operation failed", colors.fg.red);
+    return env.messages.OperationFailed;
   }
 };
 

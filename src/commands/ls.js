@@ -26,10 +26,11 @@ const func = async (_, env) => {
       return 0;
     });
     console.table(result);
-    env.print("\n");
-    env.printCurrentDir();
+    return env.messages.OperationSuccessful;
+    // env.print("\n");
+    // env.printCurrentDir();
   } catch (err) {
-    return coloring("Operation failed", colors.fg.red);
+    return env.messages.OperationFailed;
   }
 };
 

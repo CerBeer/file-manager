@@ -2,7 +2,7 @@ import coloring, { colors } from "../utils/colors.js";
 
 const func = () => {
   return coloring(
-    'Try "man <command> to get information about <command>',
+    'Try "man <command>" to get information about <command>',
     colors.fg.green
   );
 };

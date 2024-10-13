@@ -1,14 +1,14 @@
 import coloring, { colors } from "../utils/colors.js";
 
 const func = (params, env) => {
-  if (!params.length) return coloring("Invalid input", colors.fg.yellow);
+  if (!params.length) return env.messages.InvalidParameters;
   const pathToDirectory = params[0];
   try {
     process.chdir(pathToDirectory);
     env.workPath = process.cwd();
-    return coloring("Operation successful", colors.fg.green);
+    return env.messages.OperationSuccessful;
   } catch (err) {
-    return coloring("Operation failed", colors.fg.red);
+    return env.messages.OperationFailed;
   }
 };
 
