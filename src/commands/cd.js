@@ -8,7 +8,7 @@ const func = (params, env) => {
     env.workPath = process.cwd();
     return env.messages.OperationSuccessful;
   } catch (err) {
-    return env.messages.OperationFailed;
+    return env.messages.OperationFailedWithError(err);
   }
 };
 

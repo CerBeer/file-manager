@@ -1,25 +1,27 @@
 import coloring, { colors } from "./utils/colors.js";
 import man from "./commands/man.js";
+import hash from "./commands/hash.js";
 import help from "./commands/help.js";
 import exit from "./commands/exit.js";
 import about from "./commands/about.js";
 import cat from "./commands/cat.js";
 import cd from "./commands/cd.js";
 import ls from "./commands/ls.js";
-import up from "./commands/up.js";
 import os from "./commands/os.js";
+import up from "./commands/up.js";
 
 const commandsList = {
   ".exit": exit,
   "?": help,
   about: about,
   man: man,
+  hash: hash,
   help: help,
   cat: cat,
   cd: cd,
   ls: ls,
+  os: os,
   up: up,
-  os:os,
 };
 
 const isKnownCommand = (command) => {

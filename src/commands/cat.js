@@ -21,10 +21,8 @@ const func = async (params, env) => {
       })
     );
     return env.messages.OperationSuccessful;
-    // env.print("\n");
-    // env.printCurrentDir();
   } catch (err) {
-    return env.messages.OperationFailed;
+    return env.messages.OperationFailedWithError(err);
   }
 };
 
