@@ -12,6 +12,7 @@ import help from "./commands/help.js";
 import exit from "./commands/exit.js";
 import ls from "./commands/ls.js";
 import os from "./commands/os.js";
+import mv from "./commands/mv.js";
 import rn from "./commands/rn.js";
 import up from "./commands/up.js";
 
@@ -30,6 +31,7 @@ const commandsList = {
   help: help,
   ls: ls,
   os: os,
+  mv: mv,
   rn: rn,
   up: up,
 };
