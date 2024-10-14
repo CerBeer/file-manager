@@ -1,5 +1,6 @@
 import path, { resolve } from "path";
 import fs from "node:fs/promises";
+import fileUtils from "../utils/file.js";
 
 import coloring, { colors } from "../utils/colors.js";
 
@@ -12,15 +13,10 @@ const func = async (params, env) => {
   if (path.dirname(destination) !== env.workPath)
     return env.messages.OperationFailedWithError(errDst);
   try {
-    const errorDestNeedThrow = await fs
-      .access(destination)
-      .then(() => true)
-      .catch(() => false);
-    const errDest = {
-      message: `FAE: File already exist, destination: ${destination}`,
-    };
-    if (errorDestNeedThrow)
-      return env.messages.OperationFailedWithError(errDest);
+    const check = await fileUtils.checkDestinationNotExist(destination);
+    if (!check.checked) {
+      return env.messages.OperationFailedWithError(check.errMsg);
+    }
 
     await fs.writeFile(destination, "");
     return env.messages.OperationSuccessful;

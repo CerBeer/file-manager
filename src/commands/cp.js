@@ -1,7 +1,7 @@
 import { resolve, parse } from "path";
 import { pipeline } from "stream/promises";
 import { createReadStream, createWriteStream } from "fs";
-import fs from "node:fs/promises";
+import fileUtils from "../utils/file.js";
 
 import coloring, { colors } from "../utils/colors.js";
 
@@ -10,26 +10,14 @@ const func = async (params, env) => {
   const source = resolve(params[0]);
   const { base } = parse(source);
   const destination = resolve(params[1], base);
+  console.log(source, base, params[1], destination);
   if (source === destination) return env.messages.InvalidParameters;
 
   try {
-    const errorSourceNeedThrow = await fs
-      .access(source)
-      .then(() => false)
-      .catch(() => true);
-    const errSrc = { message: `FNF: File not found, source: ${source}` };
-    if (errorSourceNeedThrow)
-      return env.messages.OperationFailedWithError(errSrc);
-
-    const errorDestNeedThrow = await fs
-      .access(destination)
-      .then(() => true)
-      .catch(() => false);
-    const errDest = {
-      message: `FAE: File already exist, destination: ${destination}`,
-    };
-    if (errorDestNeedThrow)
-      return env.messages.OperationFailedWithError(errDest);
+    const check = await fileUtils.checkSourceExistDestinationNotExist(source, destination);
+    if (!check.checked) {
+      return env.messages.OperationFailedWithError(check.errMsg);
+    }
 
     const read = createReadStream(source);
     const write = createWriteStream(destination);

@@ -1,5 +1,6 @@
 import { resolve } from "path";
-import fs, { rm } from "fs/promises";
+import { rm } from "fs/promises";
+import fileUtils from "../utils/file.js";
 
 import coloring, { colors } from "../utils/colors.js";
 
@@ -8,13 +9,10 @@ const func = async (params, env) => {
   const source = resolve(params[0]);
 
   try {
-    const errorSourceNeedThrow = await fs
-      .access(source)
-      .then(() => false)
-      .catch(() => true);
-    const errSrc = { message: `FNF: File not found, source: ${source}` };
-    if (errorSourceNeedThrow)
-      return env.messages.OperationFailedWithError(errSrc);
+    const check = await fileUtils.checkSourceExist(source);
+    if (!check.checked) {
+      return env.messages.OperationFailedWithError(check.errMsg);
+    }
 
     await rm(source);
     return env.messages.OperationSuccessful;
